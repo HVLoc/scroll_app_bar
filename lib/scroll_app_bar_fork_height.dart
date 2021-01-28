@@ -1,4 +1,4 @@
-library scroll_app_bar;
+library scroll_app_bar_fork_height;
 
 export 'package:scroll_bars_common/scroll_bars_common.dart' show Snap;
 

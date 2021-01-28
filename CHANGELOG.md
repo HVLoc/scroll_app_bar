@@ -1,3 +1,6 @@
+## [1.0.4] - Jan 28, 2021
+* Add height custom
+
 ## [1.0.3] - Jan 13, 2020
 * Support for transparent appbar (Fix #6). Thanks @ncpleslie and @xJon
 

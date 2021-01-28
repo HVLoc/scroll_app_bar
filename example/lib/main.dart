@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:scroll_app_bar/scroll_app_bar.dart';
+import 'package:scroll_app_bar_fork_height/scroll_app_bar_fork_height.dart';
 
 void main() => runApp(App());
 

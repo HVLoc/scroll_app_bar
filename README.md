@@ -24,7 +24,7 @@ This is currently our roadmap, **please feel free to request additions/changes**
 
 ### Getting started
 
-Add `scroll_app_bar` package to your project. You can do this following [this steps](https://pub.dev/packages/scroll_app_bar#-installing-tab-).
+Add `scroll_app_bar_fork_height` package to your project.
 
 ### Basic implementation
 
@@ -49,6 +49,7 @@ Widget build(BuildContext context) {
     appBar: ScrollAppBar(
       controller: controller, // Note the controller here
       title: Text("App Bar"),
+      height: 100 // default kToolbarHeight
     ),
     body: ListView.builder(
       controller: controller, // Controller is also here
@@ -69,6 +70,7 @@ Widget build(BuildContext context) {
     appBar: ScrollAppBar(
       controller: controller, // Note the controller here
       title: Text("App Bar"),
+       height: 100 // default kToolbarHeight
     ),
     body: Snap(
       controller: controller.appBar,
