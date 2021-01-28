@@ -26,10 +26,10 @@ class _AppState extends State<App> {
     return MaterialApp(
       home: Scaffold(
         appBar: ScrollAppBar(
+          height: 200,
           controller: controller, // Note the controller here
           title: Text("App Bar"),
-          backgroundColor:
-              Colors.transparent, // Will make background transparent
+          backgroundColor: Colors.red, // Will make background transparent
           materialType: MaterialType
               .transparency, // Needed if you want a transparent background
           actions: [
@@ -42,6 +42,10 @@ class _AppState extends State<App> {
               },
             ),
           ],
+          flexibleSpace: Align(
+            alignment: Alignment.bottomLeft,
+            child: Text("This is Sub App Bar"),
+          ),
         ),
         body: Snap(
           controller: controller.appBar,

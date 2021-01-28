@@ -3,29 +3,30 @@ import 'package:flutter/material.dart';
 import 'scroll_app_bar_controller.dart';
 
 class ScrollAppBar extends StatefulWidget with PreferredSizeWidget {
-  ScrollAppBar({
-    Key key,
-    @required this.controller,
-    this.leading,
-    this.automaticallyImplyLeading = true,
-    this.title,
-    this.actions,
-    this.flexibleSpace,
-    this.bottom,
-    this.elevation,
-    this.shape,
-    this.backgroundColor,
-    this.backgroundGradient,
-    this.brightness,
-    this.iconTheme,
-    this.actionsIconTheme,
-    this.textTheme,
-    this.centerTitle,
-    this.titleSpacing = NavigationToolbar.kMiddleSpacing,
-    this.toolbarOpacity = 1.0,
-    this.bottomOpacity = 1.0,
-    this.materialType,
-  })  : assert(controller != null),
+  ScrollAppBar(
+      {Key key,
+      @required this.controller,
+      this.leading,
+      this.automaticallyImplyLeading = true,
+      this.title,
+      this.actions,
+      this.flexibleSpace,
+      this.bottom,
+      this.elevation,
+      this.shape,
+      this.backgroundColor,
+      this.backgroundGradient,
+      this.brightness,
+      this.iconTheme,
+      this.actionsIconTheme,
+      this.textTheme,
+      this.centerTitle,
+      this.titleSpacing = NavigationToolbar.kMiddleSpacing,
+      this.toolbarOpacity = 1.0,
+      this.bottomOpacity = 1.0,
+      this.materialType,
+      this.height = kToolbarHeight})
+      : assert(controller != null),
         super(key: key);
 
   final ScrollController controller;
@@ -48,12 +49,13 @@ class ScrollAppBar extends StatefulWidget with PreferredSizeWidget {
   final double bottomOpacity;
   final double toolbarOpacity;
   final MaterialType materialType;
+  final double height;
 
   @override
   _ScrollAppBarState createState() => _ScrollAppBarState();
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => Size.fromHeight(height);
 }
 
 class _ScrollAppBarState extends State<ScrollAppBar> {
@@ -63,25 +65,27 @@ class _ScrollAppBarState extends State<ScrollAppBar> {
 
   @override
   Widget build(BuildContext context) {
-    appBar = AppBar(
-      leading: widget.leading,
-      automaticallyImplyLeading: widget.automaticallyImplyLeading,
-      title: widget.title,
-      actions: widget.actions,
-      flexibleSpace: widget.flexibleSpace,
-      bottom: widget.bottom,
-      elevation: 0.0,
-      backgroundColor: Colors.transparent,
-      brightness: widget.brightness,
-      iconTheme: widget.iconTheme,
-      actionsIconTheme: widget.actionsIconTheme,
-      textTheme: widget.textTheme,
-      centerTitle: widget.centerTitle,
-      titleSpacing: widget.titleSpacing,
-      bottomOpacity: widget.bottomOpacity,
-      toolbarOpacity: widget.toolbarOpacity,
-      shape: widget.shape,
-    );
+    appBar = PreferredSize(
+        preferredSize: Size.fromHeight(widget.height),
+        child: AppBar(
+          leading: widget.leading,
+          automaticallyImplyLeading: widget.automaticallyImplyLeading,
+          title: widget.title,
+          actions: widget.actions,
+          flexibleSpace: widget.flexibleSpace,
+          bottom: widget.bottom,
+          elevation: 0.0,
+          backgroundColor: Colors.transparent,
+          brightness: widget.brightness,
+          iconTheme: widget.iconTheme,
+          actionsIconTheme: widget.actionsIconTheme,
+          textTheme: widget.textTheme,
+          centerTitle: widget.centerTitle,
+          titleSpacing: widget.titleSpacing,
+          bottomOpacity: widget.bottomOpacity,
+          toolbarOpacity: widget.toolbarOpacity,
+          shape: widget.shape,
+        ));
 
     backgroundColor = widget.backgroundColor ??
         Theme.of(context).appBarTheme.color ??
@@ -129,7 +133,7 @@ class _ScrollAppBarState extends State<ScrollAppBar> {
 
   Widget _decoratedContainer(double heightFactor) {
     return Container(
-      height: widget.controller.appBar.height,
+      height: widget.height,
       decoration: BoxDecoration(
         color: backgroundColor,
         gradient: widget.backgroundGradient,
